@@ -1,7 +1,10 @@
 #!/usr/bin/env python
 #-*- coding:utf-8 -*-
 
-__author__ = 'wangyao'
+'''
+	QuickSort
+ 	Create by Soyn. 26/7/15.
+'''
 
 def partion(a,p,r):
     pivot = a[p]

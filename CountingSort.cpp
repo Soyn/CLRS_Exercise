@@ -1,5 +1,9 @@
 #include <iostream>
 
+/*
+* CountingSort
+* Created by Soyn. 26/7/15
+*/
 
 const int N = 8;
 
