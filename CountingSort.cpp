@@ -23,15 +23,12 @@ void CountingSort( int *a, int *b, int k)
     for( int i = 0; i < k; ++i)
         c[i] = 0;
 
-    print(c,k);
     for( int i = 0; i < N; ++i)
         ++c[ a[i] ];
-    print(c,k);
 
     for( int i = 1; i < k; ++i)
         c[i] = c[i] + c[ i -1];
 
-    print(c,k);
 
     for( int i = N -1; i >= 0; --i){
         b[ c[a[i]] - 1] = a[i];
