@@ -1,7 +1,7 @@
 #include <iostream>
 #include <initializer_list>
 //!
-//! @Brief:get the minmum and maxmum in one through.
+//! @Brief:get the minmum and maxmum 3 * (n // 2) comparison
 //! Create by Soyn. 31/7/15.
 //!
 
