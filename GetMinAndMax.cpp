@@ -4,9 +4,9 @@
 #include <vector>
 
 //!
-//! @Brief:get the minmum and maxmum 3 * (n // 2) comparison
+//! @Brief:get the minmum and maxmum in an array (size is n) , by using 3 * (n // 2) comparisons.
 //! Create by Soyn. 31/7/15.
-//!  Refactor by @Mooopy
+//! Refactor by @Mooopy
 //!
 
 
