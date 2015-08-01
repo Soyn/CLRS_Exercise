@@ -27,8 +27,10 @@ def QuickSort(a,p,q):
         QuickSort(a,p,r)
         QuickSort(a,r + 1,q)
 
-a = [6,10,13,5,8,3,2,11]
+def test():
+    a = [6,10,13,5,8,3,2,11]
+    QuickSort(a,0,len(a))
+    print "After Sorted: ", a
 
-QuickSort(a,0,len(a))
-
-print a
+if __name__ == "__main__":
+    test()
