@@ -2,12 +2,15 @@
 #!-*- coding:utf-8 -*-
 
 from random import randint
-__author__ = 'wangyao'
 
 
+'''
+    Randomized-Select Algorithm
+    runing time ----> Theate(n)
+    Created by Soyn. 1/8/15.
+'''
 
 def Partion(a, p, r):
-    print a
     pivot = a[p]
     i = p
     j = p
@@ -24,8 +27,7 @@ def Partion(a, p, r):
 def Randomized_Partion(a, p, r):
     i =randint(p,r -1)
     a[i],a[p] = a[p], a[i]
-    q = Partion(a,p,r)
-    return q
+    return Partion(a,p,r)
 
 def Randomized_Select(a,p,r,i):
     if p == r - 1:
@@ -43,7 +45,7 @@ def Randomized_Select(a,p,r,i):
 
 def test():   #for test
     a = [2,3,1,2,4,5,7,9,4,3,-2,-3]
-    print Randomized_Select(a,0,len(a),7)
+    print "The element selected is: ", Randomized_Select(a,0,len(a),2)
 
 if __name__ == "__main__":
     test()

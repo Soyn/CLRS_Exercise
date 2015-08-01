@@ -2,7 +2,8 @@
 #-*- coding:utf-8 -*-
 
 '''
-	QuickSort
+	QuickSort Algorithm
+	Average Runing Time ---> O(nlgn)
  	Create by Soyn. 26/7/15.
 '''
 
