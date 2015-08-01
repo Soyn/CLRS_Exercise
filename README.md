@@ -9,6 +9,7 @@
 
 ##MinAndMax
 
-> Get the minmum and maxmum in an array(size is n), by using 3 * (n // 2) times comparisons. ( [GetMinAndMax.cpp](GetMinAndMax.cpp))
+> Get the minmum and maxmum in an array(size is n), by using 3 * (n // 2) times comparisons. 
+    ( [GetMinAndMax.cpp](GetMinAndMax.cpp))
  
 ##[Randomized-Select](Randomized_Select.py)
