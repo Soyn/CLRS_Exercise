@@ -13,4 +13,4 @@
        ([GetMinAndMax.cpp](GetMinAndMax.cpp))
  
 ##[Randomized-Select](Randomized_Select.py) ----> **Recurison Version**
-##[Randomized-Select-iteration.cpp](Randomized_Select_Iteration.cpp) ----> **Iteration Version**
+##[Randomized-Select](Randomized_Select_Iteration.cpp) ----> **Iteration Version**
