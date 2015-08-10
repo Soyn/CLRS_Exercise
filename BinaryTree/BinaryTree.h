@@ -25,7 +25,7 @@ node *BinaryTree( int *a, int n)
             std :: cout << "root not null\n";
             while(curr){
                 prev = curr;
-                if( curr -> key <= newnode -> key)
+                if( newnode -> key <= curr -> key)
                     curr = curr ->left;
                 else
                     curr = curr -> right;
