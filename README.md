@@ -17,7 +17,7 @@
 
 ##[Queue Exercise](Queue.cpp)
 
-##[Create BinaryTree](BinaryTree)
+##[Create BinaryTree](BinaryTree/BinaryTree.h)
 
 ##[Traversal_Recursion](BinaryTree/Traversal_Recursion.h)
 
