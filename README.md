@@ -22,3 +22,7 @@
 ##[Traversal_Recursion](BinaryTree/Traversal_Recursion.h)
 
 ##[Traversal_Iteration](BinaryTree/Traversal_Iteration.h)
+
+##[Stack_Simulate_Queue](Stack_Simulate_Queue.cpp)
+
+##[Queue_Simulate_Stack](Queue_Simulate_Stack.cpp)
