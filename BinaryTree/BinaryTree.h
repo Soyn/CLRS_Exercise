@@ -4,6 +4,13 @@
 #include <iostream>
 #include <memory>
 
+
+/**
+* Created by Soyn.10/9/15.
+* To created a binary tree.
+**/
+/// <summary>The following is the procedure to create a binary tree.</summary>
+
 typedef struct node
 {
     struct node *parents;
@@ -12,6 +19,9 @@ typedef struct node
     int key;
 } node;
 
+/// <para name = "*a"> the array which stores the tree node.</para name>
+/// <para name = "n"> the size of the array</para name>
+///
 node *BinaryTree( int *a, int n)
 {
     node *root = NULL,*prev, *curr,*newnode;
@@ -22,7 +32,6 @@ node *BinaryTree( int *a, int n)
         newnode -> left = newnode -> right = newnode -> parents = NULL;
         newnode -> key = a[i];
         if(root){
-            std :: cout << "root not null\n";
             while(curr){
                 prev = curr;
                 if( newnode -> key <= curr -> key)
@@ -33,40 +42,21 @@ node *BinaryTree( int *a, int n)
 
             if( newnode -> key > prev ->key)
             {
-                std :: cout << "I'm linked in right-subtree\n";
                 prev -> right = newnode;
                 newnode -> parents= prev;
             }else{
-                std ::cout << "I'm linked in left-subtree\n";
                 prev -> left = newnode;
                 newnode -> parents = prev;
         }
         }
         else
         {
-            std :: cout << "root is NULL\n";
             root =  newnode;
         }
     }
     return root;
 }
 
-void freeTree(node *root)   //delete tree
-{
-    if( root != NULL){
-        freeTree( root -> left);
-        delete root;
-        freeTree( root -> right);
-    }
-}
 
-void PrevOrderTraversal(node *root)
-{
-    if( root != NULL){
-        std :: cout << root -> key << std :: endl;
-        PrevOrderTraversal(root -> left);
-        PrevOrderTraversal(root -> right);
-    }
-}
 
 #endif // BINARYTREE_H_INCLUDED
