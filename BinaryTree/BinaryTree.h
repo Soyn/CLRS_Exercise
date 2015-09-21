@@ -57,6 +57,54 @@ node *BinaryTree( int *a, int n)
     return root;
 }
 
+///
+/// <summary>to get the minmum key in the key</summary>
+/// <para name = "t"> the node in the tree</para name>
+///
 
+int Minmum(node* t)
+{
+    int Min = t -> key;
+
+    while(t -> left)
+    {
+        //std :: cout << t -> key << ' ';
+        t = t -> left;
+        Min = t -> key;
+    }
+    return Min;
+}
+
+int Maxnum(node* t)
+{
+    int Max = t -> key;
+    while(t -> right)
+    {
+        t = t -> right;
+        Max = t -> key;
+    }
+    return Max;
+}
+
+///
+/// <summary>to search the specified value in the tree.</summary>
+/// <para name = "t"> the node in the tree</para name>
+/// <para name = "key"> the key to search</ para name>
+/// <return var> the node address</return var>
+///
+node * Search(node *t,int key)
+{
+    while(t)
+    {
+        if( t -> key == key)
+            return t;
+        else{
+            if( key < t -> key)
+                t = t -> left;
+            else
+                t = t -> right;
+        }
+}
+}
 
 #endif // BINARYTREE_H_INCLUDED
