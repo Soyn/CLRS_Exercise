@@ -36,17 +36,16 @@ void PostOrderTraversal_Iter( node *root)
         node *curr = stk.top();
         stk.pop();
         helpStack.push(curr);
-        stk.push( curr -> right);
-        stk.push( curr -> left);
+        if(curr -> left) stk.push( curr -> left);
+        if( curr -> right )stk.push( curr -> right);
     }
 
     while( !helpStack.empty())   // In PrevOrderTraversal_Iter(), the order in stack is root ==> right ==> left, if we reverse the order (i.e. left ==> right ==> root) we can get the order we need.
     {
-        std :: cout << helpStack.top() -> key<< std :: endl;
+        std :: cout << helpStack.top() -> key<< ' ';
         helpStack.pop();
     }
 }
-
 void MiddOrderTraversal_Iter(node *root)
 {
     std::stack<node* > stk;
