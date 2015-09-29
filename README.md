@@ -30,3 +30,7 @@
 ##[TreeSuccessor](TreeSuccessor.cpp)
 
 ##[TreePredecessor](TreePredecessor.cpp)
+
+##[TreeInsert](TreeInsert.cpp)
+
+##[TreeDelete](TreeDelete.cpp)
