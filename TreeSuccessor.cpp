@@ -16,7 +16,7 @@ int TreeSuccessor( node* t, node* key)
 {
     if(key -> right) // if key's right tree is not NULL, its successor node is the leftest node(i.e. the minmum nod in the tree of key.)
     {
-        return Minmum(t -> right);
+        return Minmum(key -> right);
     }
 
     node* tmp = key -> parents;
