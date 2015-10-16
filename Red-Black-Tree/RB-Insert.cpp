@@ -10,6 +10,15 @@ pNode Nil = &n;
 /// <para name = "t"> the pointer points to the node to be inserted</para name>
 ///
 
+void Print(pNode t)
+{
+    if((t -> left) != Nil || (t -> right) != Nil)
+    {
+        std :: cout << 'f' << std :: endl;
+        Print(t -> left);
+        Print(t -> right);
+    }
+}
 void RB_Insert(pNode root, pNode t)
 {
     //*{ the normal procedure to insert a node into the BST
@@ -185,6 +194,21 @@ void Right_Rotate(pNode root, pNode t)
 
 int main(int argc, char *argv[])
 {
-    std :: cout << "Start the RB_tree" << std :: endl;
+
+    node t[] = {
+        {41,Nil,Nil,Nil,},
+        {38,Nil,Nil,Nil,},
+        {31,Nil,Nil,Nil,},
+        {12,Nil,Nil,Nil,},
+        {19,Nil,Nil,Nil,},
+        {31,Nil,Nil,Nil,}
+    };
+
+    pNode root = Nil;
+
+    for(int i = 0; i< sizeof(t) / sizeof(node); ++i)
+            RB_Insert(root,t+i);
+
+    Print(root);
     return 0;
 }
