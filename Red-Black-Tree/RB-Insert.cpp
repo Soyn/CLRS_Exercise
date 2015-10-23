@@ -89,13 +89,13 @@ pNode RB_Insert_Fixup(pNode root, pNode t)
                 //{*Case2: uncle node is black and right child
                 if(t == (t -> parent -> right))
                 {
-                    t = t -> parent;
-                    root = Left_Rotate(root, t);
+                     t = t -> parent;
+                     root = Left_Rotate(root, t);
                 }
                 //{*Case3: uncle node is black and the left child
-                t -> parent -> color = "BLACK";
-                t -> parent -> parent -> color = "RED";
-                root = Right_Rotate(root,t -> parent -> parent);
+                     t -> parent -> color = "BLACK";
+                     t -> parent -> parent -> color = "RED";
+                     root = Right_Rotate(root,t -> parent -> parent);
                     //*}
             }
         }
