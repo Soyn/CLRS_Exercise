@@ -1,32 +1,36 @@
 #include <iostream>
 #include "RB-Insert.h"
-
+/*
+* Author: Soyn
+* @Brief: the main body to insert a node into the read-black tree
+* Created time : 14/10/15.
+* */
 node n = {-1,NULL,NULL,NULL,"BLACK"};
-pNode Nil = &n;
-
+pNode Nil = &n; // the pointer points to the flag.
+///
+/// <summary> Print the node</summary>
+/// <para name = "t"> the pointer points to the node</para name>
+///
+//
+void Print(pNode t)
+{
+    if(t != Nil)
+    {
+        std :: cout << t -> key <<'('<< t -> color << ')'<< std :: endl; 
+        Print(t -> left);
+        Print(t -> right);
+    }
+}
 ///
 /// <summary> insert a node into the RB_Tree</summary>
 /// <para name = "root"> the pointer points to the RBT's root node</para name>
 /// <para name = "t"> the pointer points to the node to be inserted</para name>
 ///
-
-void Print(pNode t)
-{
-    if((t -> left) != Nil || (t -> right) != Nil)
-    {
-        std :: cout << 'f' << std :: endl;
-        Print(t -> left);
-        Print(t -> right);
-    }
-}
-void RB_Insert(pNode root, pNode t)
+pNode RB_Insert(pNode root, pNode t)
 {
     //*{ the normal procedure to insert a node into the BST
-
     // PNode <===> node*
-    pNode prev = Nil;
-    pNode curr = root;
-
+    pNode prev = Nil,curr = root;
     while(curr != Nil)
     {
         prev = curr;
@@ -34,74 +38,74 @@ void RB_Insert(pNode root, pNode t)
             curr = curr -> right;
         else curr = curr -> left;
     }
-
     t -> parent = prev;
-
     if( prev == Nil)
+    {
         root = t;
+        Nil -> left = root; //set the root to be the Nil's left child.
+    }
     else
+    {
         if(t -> key > prev -> key)
             prev -> right = t;
         else
             prev -> left = t;
-
-    t -> left = t -> right = Nil;
+    }
     t -> color = "RED";
-
     //*}
-
-    RB_Insert_Fixup(root, t);
+    return root = RB_Insert_Fixup(root,t);
 }
-
 ///
 /// <summary>The procedure to do rotation and recolor to maintain the RB_tree's properties</summary>
 /// <para name = "root"> the pointer points to the RBT's root node</para name>
 /// <para name = "t"> the pointer points to the node to be inserted</para name>
 ///
-void RB_Insert_Fixup(pNode root, pNode t)
+pNode RB_Insert_Fixup(pNode root, pNode t)
 {
     while(t -> parent -> color == "RED")
     {
+        
         /*
-        * the uncle node is the left child.
+        * the uncle node is the left subtree.
         */
-        if(t -> parent == t -> parent -> parent -> left)
+        if((t -> parent) == (t -> parent -> parent -> left))
         {
             pNode unclePNode = t -> parent -> parent -> right;
-            // Case1:the uncle node's color is red
+            // {*Case1:the uncle node's color is red
             if(unclePNode -> color == "RED")
             {
+                
                 //{* recoloring
                 t -> parent -> color = "BLACK";
                 unclePNode -> color = "BLACK";
                 t -> parent -> parent -> color = "RED";
+                t = t -> parent -> parent;
                 //*}
             }
+            //*}
             else //{* Case2 and Case3: the uncle node's color is black
             {
+                
                 //{*Case2: uncle node is black and right child
                 if(t == (t -> parent -> right))
                 {
                     t = t -> parent;
-                    Left_Rotate(root, t);
+                    root = Left_Rotate(root, t);
                 }
-
-                //{*Case3: uncle node is black and
+                //{*Case3: uncle node is black and the left child
                 t -> parent -> color = "BLACK";
                 t -> parent -> parent -> color = "RED";
-                Right_Rotate(root,t -> parent -> parent);
-                //*}
-            }//*}
+                root = Right_Rotate(root,t -> parent -> parent);
+                    //*}
+            }
         }
-
         /*
-        * the uncle node is the right child.
+        * the t's parent  is the right subtree.
         */
         else
         {
-            //t -> parent ->parent == right
+            //t -> parent ->parent == left
             pNode uncleNode = t -> parent -> parent -> left;
-
             //{* Case1:the uncle node is red
             if(uncleNode -> color == "RED")
             {
@@ -109,6 +113,7 @@ void RB_Insert_Fixup(pNode root, pNode t)
                 t -> parent -> color = "BLACK";
                 uncleNode -> color = "BLACK";
                 t -> parent -> parent -> color = "RED";
+                t = t -> parent -> parent;
                 //*}
             }
             //*}
@@ -118,97 +123,94 @@ void RB_Insert_Fixup(pNode root, pNode t)
                 if(t == (t -> parent -> left))
                 {
                     t = t -> parent;
-                    Right_Rotate(root,t);
+                    root =  Right_Rotate(root,t);
                 }
-
                 //Case3: the parent is the right child
-
                 t -> parent -> color = "BLACK";
                 t -> parent -> parent -> color ="RED";
-                Left_Rotate(root, t -> parent -> parent);
+                root = Left_Rotate(root, t -> parent -> parent);
             }
         }
     }
+    root -> color = "BLACK";
+    return root;
 }
-
 ///
 /// <summary>left rotation</summary>
 /// <para name = "root"> the pointer points to the root</para name>
 /// <para name = "t"> the pointer points to be insered</para name>
+/// introduction:
+///                 root                                              root
+///                  /                                                /
+///                 x                                                y
+///                / \             left_rotate(x)                   / \
+///              lx   y         ------------------>                x   ry
+///                  / \        <------------------               / \
+///                 ly  ry         right_rotate(x)               lx  ly
 ///
-void Left_Rotate(pNode root, pNode t)
+pNode Left_Rotate(pNode root, pNode x)
 {
-    pNode y = t -> right;
-
-    t -> right = y -> left; // turn y's left subtree into t's right subtree.
-
+    pNode y = x -> right;
+    x -> right = y -> left; // turn y's left subtree into t's right subtree.
     if(y -> left != Nil)
-        y -> left -> parent = t;
-
-    y -> parent = t -> parent; // link x's parent to y.
-
-    if(t -> parent == Nil)
+        y -> left -> parent = x;
+    y -> parent = x -> parent; // link x's parent to y.
+    if(x -> parent == Nil)
         root = y;
     else
     {
-        if(t == (t -> parent -> left))
-            t -> parent -> left = y;
+        if(x == (x -> parent -> left))
+            x -> parent -> left = y;
         else
-            t -> right -> right = y;
+            x -> parent -> right = y;
     }
-
-    y -> left = t; //put x on y's left
-    t -> parent = y;
+    y -> left = x; //put x on y's left
+    x -> parent = y;
+    Nil -> left = root;
+    return root;
 }
-
 ///
 /// <summary>right rotation</summary>
 /// <para name = "root"> the pointer points to the root</para name>
 /// <para name = "t"> the pointer points to be insered</para name>
 ///
-
-void Right_Rotate(pNode root, pNode t)
+pNode Right_Rotate(pNode root, pNode x)
 {
-    pNode y = t -> left;
 
-    t -> left = y -> right; // turn y's right subtree into t's left subtree
-
+    pNode y = x -> left;
+    x -> left = y -> right; // turn y's right subtree into x's left subtree.
     if( y -> right != Nil)
-        y -> right -> parent = t;
-
-    y -> parent = t -> parent;
-
-    if(t -> parent == Nil)
+        y -> right -> parent = x;
+    y -> parent = x -> parent;
+    if(x -> parent == Nil)
         root = y;
     else
     {
-        if( t == (t -> parent -> right))
-            t -> parent -> right = y;
+        if( x == (x -> parent -> right))
+            x -> parent -> right = y;
         else
-            t -> parent -> left = y;
+            x -> parent -> left = y;
     }
-
-    y -> right = t;
-    t -> parent = y;
+    y -> right = x;
+    x -> parent = y;
+    Nil -> left = root;
+    return root;
 }
-
 int main(int argc, char *argv[])
 {
-
     node t[] = {
         {41,Nil,Nil,Nil,},
         {38,Nil,Nil,Nil,},
         {31,Nil,Nil,Nil,},
         {12,Nil,Nil,Nil,},
         {19,Nil,Nil,Nil,},
-        {31,Nil,Nil,Nil,}
+        {8,Nil,Nil,Nil,}
     };
-
     pNode root = Nil;
-
-    for(int i = 0; i< sizeof(t) / sizeof(node); ++i)
-            RB_Insert(root,t+i);
-
+    for(int i = 0; i < sizeof(t) / sizeof(t[0]); ++i)
+    {
+        root = RB_Insert(root, t + i);
+    }
     Print(root);
     return 0;
 }
