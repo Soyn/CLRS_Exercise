@@ -5,9 +5,9 @@
 #include <string>
 
 /*
-* Author:Soyn 
+* Author:Soyn
 * @Brief: the implement of red-black tree
-* Created time: 14/10/15. 
+* Created time: 14/10/15.
 */
 
 ///
@@ -22,8 +22,8 @@ struct node
 };
 
 typedef node* pNode;
-node flag = {-1,NULL,NULL,NULL,"BLACK"};
-pNode Nil = &flag;     // the pointer points to the flag
+extern node flg;
+extern pNode Nil;     // the pointer points to the flag
 
 pNode RB_Insert_Fixup(pNode, pNode);
 pNode RB_Insert(pNode,pNode);

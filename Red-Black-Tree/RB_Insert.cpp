@@ -1,21 +1,25 @@
 #include <iostream>
 #include "RB_Insert.h"
+
+
 /*
 * Author: Soyn
 * @Brief: the main body to insert a node into the read-black tree
 * Created time : 14/10/15.
 * */
 
+
 ///
 /// <summary> Print the node</summary>
 /// <para name = "t"> the pointer points to the node</para name>
 ///
-//
+///
+
 void Print(pNode t)
 {
     if(t != Nil)
     {
-        std :: cout << t -> key <<'('<< t -> color << ')'<< std :: endl; 
+        std :: cout << t -> key <<'('<< t -> color << ')'<< std :: endl;
         Print(t -> left);
         Print(t -> right);
     }
@@ -63,7 +67,7 @@ pNode RB_Insert_Fixup(pNode root, pNode t)
 {
     while(t -> parent -> color == "RED")
     {
-        
+
         /*
         * the uncle node is the left subtree.
         */
@@ -73,7 +77,7 @@ pNode RB_Insert_Fixup(pNode root, pNode t)
             // {*Case1:the uncle node's color is red
             if(unclePNode -> color == "RED")
             {
-                
+
                 //{* recoloring
                 t -> parent -> color = "BLACK";
                 unclePNode -> color = "BLACK";
@@ -84,7 +88,7 @@ pNode RB_Insert_Fixup(pNode root, pNode t)
             //*}
             else //{* Case2 and Case3: the uncle node's color is black
             {
-                
+
                 //{*Case2: uncle node is black and right child
                 if(t == (t -> parent -> right))
                 {
@@ -194,22 +198,4 @@ pNode Right_Rotate(pNode root, pNode x)
     x -> parent = y;
     Nil -> left = root;
     return root;
-}
-int main(int argc, char *argv[])
-{
-    node t[] = {
-        {41,Nil,Nil,Nil,},
-        {38,Nil,Nil,Nil,},
-        {31,Nil,Nil,Nil,},
-        {12,Nil,Nil,Nil,},
-        {19,Nil,Nil,Nil,},
-        {8,Nil,Nil,Nil,}
-    };
-    pNode root = Nil;
-    for(int i = 0; i < sizeof(t) / sizeof(t[0]); ++i)
-    {
-        root = RB_Insert(root, t + i);
-    }
-    Print(root);
-    return 0;
 }

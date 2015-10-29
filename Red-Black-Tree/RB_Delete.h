@@ -1,6 +1,6 @@
 /*************************************************************************
 	> File Name: RB_Delete.h
-	> Author:Soyn 
+	> Author:Soyn
     > @Brief: the header file of red-black tree delete
 	> Created Time:28/10/15.
  ************************************************************************/
@@ -10,6 +10,7 @@
 #include "RB_Insert.h"
 
 pNode RB_Delete(pNode, pNode);
-pNode RB_Delete_FIxup(pNode,pNode);
-
+pNode RB_Delete_Fixup(pNode,pNode);
+pNode Tree_Successor(pNode);
+pNode Tree_Minmum(pNode);
 #endif
