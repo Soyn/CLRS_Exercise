@@ -6,8 +6,9 @@
 * Author: Soyn
 * @Brief: the main body to insert a node into the read-black tree
 * Created time : 14/10/15.
-* */
-
+*
+* 
+*/
 
 ///
 /// <summary> Print the node</summary>
