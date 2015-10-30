@@ -1,11 +1,8 @@
 #include <iostream>
 #include "RB_Insert.h"
 
-
-
-node flag = {-1,NULL,NULL,NULL,"Black"};
+node flag = {-1, NULL,NULL,NULL,"BLACK"};
 pNode Nil = &flag;
-
 pNode SearchNode(pNode t, int key)
 {
     if( t != Nil){

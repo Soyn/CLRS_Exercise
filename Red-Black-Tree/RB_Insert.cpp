@@ -139,19 +139,19 @@ pNode RB_Insert_Fixup(pNode root, pNode t)
     root -> color = "BLACK";
     return root;
 }
-///
-/// <summary>left rotation</summary>
-/// <para name = "root"> the pointer points to the root</para name>
-/// <para name = "t"> the pointer points to be insered</para name>
-/// introduction:
-///                 root                                              root
-///                  /                                                /
-///                 x                                                y
-///                / \             left_rotate(x)                   / \
-///              lx   y         ------------------>                x   ry
-///                  / \        <------------------               / \
-///                 ly  ry         right_rotate(x)               lx  ly
-///
+/*
+*    /// <summary>left rotation</summary>
+*   /// <para name = "root"> the pointer points to the root</para name>
+*   /// <para name = "t"> the pointer points to be insered</para name>
+*   /// introduction:
+*   ///                 root                                              root
+*   ///                  /                                                /
+*   ///                 x                                                y
+*   ///                / \             left_rotate(x)                   / \
+*   ///              lx   y         ------------------>                x   ry
+*   ///                  / \        <------------------               / \
+*   ///                 ly  ry         right_rotate(x)               lx  ly
+*/
 pNode Left_Rotate(pNode root, pNode x)
 {
     pNode y = x -> right;
