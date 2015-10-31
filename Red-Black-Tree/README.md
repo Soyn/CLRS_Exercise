@@ -1,3 +1,3 @@
 # Red Black tree
 
-## [Red Black tree](RB-Insert.cpp)
+## [Red Black tree](RB_Insert.cpp)
