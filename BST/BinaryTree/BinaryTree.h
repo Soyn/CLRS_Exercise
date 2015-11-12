@@ -19,6 +19,8 @@ typedef struct node
     int key;
 } node;
 
+///
+/// <summary> create the binary tree.</summary>
 /// <para name = "*a"> the array which stores the tree node.</para name>
 /// <para name = "n"> the size of the array</para name>
 ///
@@ -74,6 +76,12 @@ int Minmum(node* t)
     }
     return Min;
 }
+
+///
+/// <summary> to get the maximum node in binary tree.</summary>
+/// <para name> the root node at the subtree.</para name>
+/// <return> the pointer points to the max node.</return>
+///
 
 int Maxnum(node* t)
 {
