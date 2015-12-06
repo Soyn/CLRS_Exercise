@@ -12,6 +12,8 @@ typedef struct node{
     int value;
     node *Predessor;
     node *Successor;
+    node *UpLevel;
+    node *DownLevel;
     node(int t) : value(t){}
 }Node;
 
@@ -24,8 +26,10 @@ public:
     Node *Search(int);
     void InsertList(int);
     void DeleteList(int);
+    void InsertIntoBottomList();
 private:
     Node *InsertedPosition;
+
     /*for keep the head level*/
     std :: vector<Node*> Heads;
     Node *top;

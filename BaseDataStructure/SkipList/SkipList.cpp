@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
-#include <random>
+#include <stdlib.h>
+#include <time.h>
 #include "SkipList.h"
 
 /*
@@ -19,24 +20,11 @@ void SkipList :: InsertList(int t)
     Node *NewNode = new Node(t);
     NewNode -> Predessor = NewNode -> Successor = NULL;
 
-    Node *prev = NULL, *curr;
+    Node *prev, *curr = NULL;
 
     if(!Heads.empty()){
-        // link the curr with the head of bottom list
-        curr = Heads[0];
 
-        while(curr != NULL){
-            prev = curr;
-            curr = curr -> Successor;
-        }
-        // insert the node
-        prev -> Successor = NewNode;
-        NewNode -> Predessor = prev;
-    }else{
-        Heads.push_back(NewNode);
-        top = curr = Heads[0];
     }
-
 
     while(true){
         if(PromoteOrNot()){
@@ -54,8 +42,13 @@ bool SkipList :: PromoteOrNot(){
     return (rand() % 2 == 1);
 }
 
+void SkipList :: InsertIntoBottomList()
+{
+    Node *head = *Heads.begin(); // the head of bottom list
+
+}
 int main(int argc, char **argv)
 {
-
+    std :: cout << "Hello World" << std :: endl;
     return 0;
 }
