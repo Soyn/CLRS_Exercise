@@ -22,7 +22,7 @@ struct node
 };
 
 typedef node* pNode;
-extern node flg;
+extern node flag;
 extern pNode Nil;     // the pointer points to the flag
 
 pNode RB_Insert_Fixup(pNode, pNode);

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "RB_Insert.h"
+#include "RB_Delete.h"
 
 node flag = {-1, NULL,NULL,NULL,"BLACK"};
 pNode Nil = &flag;
@@ -36,7 +37,7 @@ int main(void)
         root = RB_Insert(root, t + i);
     }
     Print(root);
-   // RB_Delete(root,SearchNode(root, 8));
+    RB_Delete(root,SearchNode(root, 8));
     return 0;
 
 }
