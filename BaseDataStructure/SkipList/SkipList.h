@@ -20,18 +20,20 @@ typedef struct node{
 class SkipList{
 public:
     // the constructor & destructor
-    SkipList(int t);
+    SkipList();
     ~SkipList(){}
     bool PromoteOrNot();
+    void PromoteProcess();
     Node *Search(int);
     void InsertList(int);
     void DeleteList(int);
-    void InsertIntoBottomList();
+    void InsertIntoBottomList(Node*);
 private:
     Node *InsertedPosition;
 
     /*for keep the head level*/
     std :: vector<Node*> Heads;
-    Node *top;
+    Node *entrance;
+    size_t level;
 };
 #endif // SKIPLIST_H_INCLUDED
