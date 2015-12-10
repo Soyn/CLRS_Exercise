@@ -23,13 +23,16 @@ public:
     SkipList();
     ~SkipList(){}
     bool PromoteOrNot();
-    void PromoteProcess();
+    void PromoteProcess(Node*);
+    Node *GetCopyNode(Node*);
     Node *Search(int);
     void InsertList(int);
     void DeleteList(int);
     void InsertIntoBottomList(Node*);
+    inline Node* AddNewLevel();
+    void InsertNewNodeInHighLevel(Node*, Node*);
+
 private:
-    Node *InsertedPosition;
 
     /*for keep the head level*/
     std :: vector<Node*> Heads;
