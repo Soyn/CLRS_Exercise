@@ -175,18 +175,18 @@ void SkipList :: DeleteList(int t)
         entrance  = entrance -> Successor;
     }else{
         pre -> Successor = curr -> Successor;
-        delete curr;
+
         while(pre -> UpLevel){
             auto pPre = pre -> UpLevel;
             curr = pPre -> Successor;
             pPre -> Successor = curr -> Successor;
-            delete curr;
     }
+     delete curr;
 }
 }
 
 int main(int argc, char **argv)
 {
-    std :: cout << "hello" << std :: endl;
+    std :: cout << "first commit" << std :: endl;
     return 0;
 }
