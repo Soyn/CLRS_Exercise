@@ -25,7 +25,7 @@ public:
     bool PromoteOrNot();
     void PromoteProcess(Node*);
     Node *GetCopyNode(Node*);
-    Node *Search(int);
+    Node *Search(Node*,int);
     void InsertList(int);
     void DeleteList(int);
     void InsertIntoBottomList(Node*);

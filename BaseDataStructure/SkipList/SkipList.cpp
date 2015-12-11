@@ -15,11 +15,7 @@
 /// <summary> Constructor</summary>
 ///
 
-SkipList :: SkipList()
-{
-    //initiailzer the level of skip list
-    level = 0;
-}
+SkipList :: SkipList(){}
 
 ///
 /// <summary> to insert the value into the skip list</summary>
@@ -31,16 +27,9 @@ void SkipList :: InsertList(int t)
     Node *NewNode = new Node(t);
     NewNode -> Predessor = NewNode -> Successor = NULL;
 
+    // insert the bottom list is necessary
     InsertIntoBottomList(NewNode);
-
-    while(true){
-        if(PromoteOrNot()){
-            //lucky flip level up
-        }else{
-            // unlucky
-
-        }
-    }
+    PromoteProcess(NewNode);
 }
 
 ///
@@ -83,7 +72,9 @@ void SkipList :: PromoteProcess(Node* InsertNode)
     InsertNode -> UpLevel = LevelUpNode;
     LevelUpNode -> DownLevel = InsertNode;
 
-    if( Heads.size() == 1 ){ // to create the new level
+    if( PromoteOrNot() ){
+
+        if( Heads.size() == 1 ){ // to create the new level
         entrance =  AddNewLevel();
         InsertNewNodeInHighLevel(Heads.at(0),LevelUpNode);
     }else{
@@ -96,6 +87,11 @@ void SkipList :: PromoteProcess(Node* InsertNode)
             }
 
         }while( PromoteOrNot()&&!Heads.empty());
+    }
+
+    }else{
+        // if not promote the node, we should delete the memory we use.
+        delete LevelUpNode;
     }
 
 }
@@ -143,12 +139,54 @@ void SkipList :: InsertNewNodeInHighLevel( Node* LevelHead, Node *LevelUpNode)
 ///
 /// <summary> to search the ndoe in skip list</summary>
 ///
-
-Node* SkipList ::Search(int t)
+Node* SkipList ::Search(Node *p, int t)
 {
-
+    while( true ){
+        if( p -> value == t){
+            return p;
+        }else{
+            if( p -> value > t && p -> Successor != NULL){
+                Search(p -> Successor, t);
+            }else{
+                Search( p -> DownLevel -> Predessor, t );
+            }
+        }
+    }
 }
+
+///
+/// <summary> the processdure to delete the node in skip list</summary>
+///
+
+void SkipList :: DeleteList(int t)
+{
+    Node *pre = NULL, *curr = Heads.at(0);
+    // to get pointer we going to delete
+    while(curr){
+        if( curr -> value == t){
+            break;
+        }else{
+            pre = curr;
+            curr = curr -> Successor;
+        }
+    }
+    if( pre == NULL){
+        // if delete the head we must move the entrance to its successor
+        entrance  = entrance -> Successor;
+    }else{
+        pre -> Successor = curr -> Successor;
+        delete curr;
+        while(pre -> UpLevel){
+            auto pPre = pre -> UpLevel;
+            curr = pPre -> Successor;
+            pPre -> Successor = curr -> Successor;
+            delete curr;
+    }
+}
+}
+
 int main(int argc, char **argv)
 {
+    std :: cout << "hello" << std :: endl;
     return 0;
 }
