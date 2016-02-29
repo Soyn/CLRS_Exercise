@@ -8,4 +8,4 @@
 -  [Red Black Tree](Red-Black-Tree)
 -  [Dynamic Programming](Dynamic_Programming)
 -  [Greed Algorithm](Greed_Algorithm)
--  [B Tree](B_Tree)
+-  [B Tree](B_tree)
