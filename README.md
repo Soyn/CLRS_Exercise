@@ -9,3 +9,4 @@
 -  [Dynamic Programming](Dynamic_Programming)
 -  [Greed Algorithm](Greed_Algorithm)
 -  [B Tree](B_tree)
+-  [Binomial Heap](BinomialHeap)
