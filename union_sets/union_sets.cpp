@@ -69,6 +69,8 @@ UnionSets* UnionSets :: FindSet(char const &target)
     }
     return nullptr;
 }
+
+// @Brief: Just for test print.
 void UnionSets :: Print()
 {
     auto beg = head_;
@@ -79,6 +81,7 @@ void UnionSets :: Print()
     std :: cout << beg->key_;
 }
 
+// @Brief: Get the head_ member.
 Node* UnionSets :: GetHead() const{
     return head_;
 }
