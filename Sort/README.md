@@ -1,6 +1,8 @@
 #This is the algorithm about sorting.
 
 ## [QuickSort](QuickSort.py)
+## [Insert Sort](insert_sort.cpp)
+## [Select Sort](select_sort.cpp)
 
 ## [CountingSort](CountingSort.cpp)
 
