@@ -3,7 +3,7 @@
 
 /*******************
 * @Author: Soyn
-* @Brief: Reverse the list, the first telephone review at Alibaba.What a pity.
+* @Brief: Reverse the list, the first telephone interview with Alibaba.What a pity.
 * @CreatedTime: 15/3/16.
 ********************/
 
