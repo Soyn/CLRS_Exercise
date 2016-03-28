@@ -16,39 +16,42 @@
 // 3.Traverse the adhacent list if color is white and then change the color,
 // the distance and parents. and add the new element into the queue.
 //
-void Graph :: BreadthFirstSearch(AdjacentList root)
+void Graph :: BreadthFirstSearch(Vertex root)
 {
-    for(auto &e : adjacent_list){
-        e.Color = white;
-        e.parents = nullptr;
-        e.distance = std :: numeric_limits<int> :: max();
+    for(auto &value : adjacent_list_){
+        for(auto &element : value.second){
+            element.color_ = white;
+            element.parents = nullptr;
+            element.distance = std :: numeric_limits<int> :: max();
+        }
     }
 
-    root.color = gray;
+    root.color_ = gray;
     root.distance = 0;
-    root.parent = nullptr;
-    record_queue_.clear();
+    root.parents = nullptr;
+    Clear();  // clear the queue
     record_queue_.push(root);
 
-    while(!record_queue_,empty()){ // while the queue is not empty(i.e. until all the vertex is black.)
-        AdjacentList start_vertex = record_queue_.pop();
-        for(auto &e : start_vertex.second){
-            if(e.color == white){
-                e.color = gray;
-                e.distance = start.distance + 1;
-                e.parents = &start_vertex;
-                record_queue_.push(e);
+    while(!record_queue_.empty()){ // while the queue is not empty(i.e. until all the vertex is black.)
+        Vertex start_vertex = record_queue_.front();
+        record_queue_.pop();
+        int index = start_vertex.key;
+
+        for(auto &element : adjacent_list_[index]){
+            if(element.color_ == white)
+                element.color_ = gray;
+                element.distance = start_vertex.distance + 1;
+                element.parents = &start_vertex;
+                record_queue_.push(element);
             }
+            start_vertex.color_ = black;
         }
-        start_vertex.color = black;
+
     }
 
-}
-void Test()
-{
 
-}
-int main(int argc, char **argv)
+void Graph :: Clear()
 {
-    return 0;
+    std :: queue<Vertex> empty;
+    std :: swap(record_queue_, empty);
 }

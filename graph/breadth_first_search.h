@@ -4,6 +4,7 @@
 #include <map>
 #include <vector>
 #include <queue>
+#include <algorithm>
 
 /********************
 * @Aythor: Soyn.
@@ -18,16 +19,16 @@ enum Color{white, gray, black};
 // @Brief: Define the vertex data member.
 struct Vertex{
     int key;
-    Color color;
+    Color color_;
     Vertex *parents;
     size_t distance;
-    Node() : color(white){}
+    Vertex(Color color) : color_(color){}
 };
 
 class Graph{
 public:
     using AdjacentList = std :: map<int, std :: vector<Vertex>>;
-    Graph(): adjacent_list(std :: make_pair()){}
+    Graph(): adjacent_list_(){}
     ~Graph(){}
     //
     // @Brief: The constructor takes AdjacentList.
@@ -36,8 +37,12 @@ public:
     // @Brief: The breadth first search.
     // @Note: More algorithm details please go to wiki.
     void BreadthFirstSearch(Vertex root);
+
+    //
+    // @Brief: Set the record_queue clear.
+    void Clear();
 private:
     AdjacentList adjacent_list_;
-    std :: queue<AdjacentList> record_queue_;
+    std :: queue<Vertex> record_queue_;
 };
 #endif // BREADTH_FIRST_SEARCH_H_INCLUDED
