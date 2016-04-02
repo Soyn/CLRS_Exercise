@@ -18,11 +18,12 @@ enum Color{white, gray, black};
 //
 // @Brief: Define the vertex data member.
 struct Vertex{
-    int key;
+    int key_;
     Color color_;
-    Vertex *parents;
-    size_t distance;
+    Vertex *parents_;
+    size_t distance_;
     Vertex(Color color) : color_(color){}
+    Vertex(int key) : key_(key){}
 };
 
 class Graph{
@@ -36,7 +37,7 @@ public:
     //
     // @Brief: The breadth first search.
     // @Note: More algorithm details please go to wiki.
-    void BreadthFirstSearch(Vertex root);
+    void BreadthFirstSearch(int root_key);
 
     //
     // @Brief: Set the record_queue clear.

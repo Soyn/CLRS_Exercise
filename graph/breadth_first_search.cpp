@@ -1,5 +1,6 @@
 #include "breadth_first_search.h"
 #include <iostream>
+#include <memory>
 #include <limits>
 /*******************
 * @Author: Soyn.
@@ -16,32 +17,35 @@
 // 3.Traverse the adhacent list if color is white and then change the color,
 // the distance and parents. and add the new element into the queue.
 //
-void Graph :: BreadthFirstSearch(Vertex root)
+void Graph :: BreadthFirstSearch(int root_key)
 {
     for(auto &value : adjacent_list_){
         for(auto &element : value.second){
             element.color_ = white;
-            element.parents = nullptr;
-            element.distance = std :: numeric_limits<int> :: max();
+            element.parents_ = nullptr;
+            element.distance_ = std :: numeric_limits<int> :: max();
         }
     }
+    std :: shared_ptr<Vertex> root( new Vertex(root_key));
 
-    root.color_ = gray;
-    root.distance = 0;
-    root.parents = nullptr;
+    root->color_ = gray;
+    root->distance_ = 0;
+    root->parents_ = nullptr;
     Clear();  // clear the queue
-    record_queue_.push(root);
+    record_queue_.push(*root);
 
-    while(!record_queue_.empty()){ // while the queue is not empty(i.e. until all the vertex is black.)
+    // while the queue is not empty(i.e. until all the vertex is black.)
+    while(!record_queue_.empty()){
         Vertex start_vertex = record_queue_.front();
+        std :: cout << start_vertex.key_ << std :: endl;
         record_queue_.pop();
-        int index = start_vertex.key;
+        int index = start_vertex.key_;
 
         for(auto &element : adjacent_list_[index]){
             if(element.color_ == white)
                 element.color_ = gray;
-                element.distance = start_vertex.distance + 1;
-                element.parents = &start_vertex;
+                element.distance_ = start_vertex.distance_ + 1;
+                element.parents_ = &start_vertex;
                 record_queue_.push(element);
             }
             start_vertex.color_ = black;
