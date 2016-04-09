@@ -35,7 +35,7 @@ void Graph :: BreadthFirstSearch(int root_key)
     record_queue_.push(*root);
 
     // while the queue is not empty(i.e. until all the vertex is black.)
-        while(!record_queue_.empty()){
+    while(!record_queue_.empty()){
         Vertex start_vertex = record_queue_.front();
         record_queue_.pop();
         int index = start_vertex.key_;
@@ -46,7 +46,7 @@ void Graph :: BreadthFirstSearch(int root_key)
                 element.distance_ = start_vertex.distance_ + 1;
                 element.parents_ = &start_vertex;
                 record_queue_.push(element);
-            }
+                }
         }
         start_vertex.color_ = black;
     }
