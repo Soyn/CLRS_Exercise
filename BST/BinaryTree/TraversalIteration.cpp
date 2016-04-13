@@ -63,14 +63,15 @@ void MiddOrderTraversalIter(node *root)
 {
     std :: stack<node*> stk;
     node *current = root;
-    while(curr || !stk.empty()){
-        if(curr){
+    while(current || !stk.empty()){
+        if(current){
             stk.push(current);
             current = current->left;
         }else{
             current = stk.top();
             stk.pop();
-            std :: cout << curr->key << std :: endl;
+            std :: cout << current->key << std :: endl;
+            current = current->right
         }
     }
 }
