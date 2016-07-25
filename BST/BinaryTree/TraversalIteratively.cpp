@@ -37,7 +37,7 @@ void PostOrderTraversalIter(node *root)
         return;
     std ::stack<node*> stk, helper_stack;
     helper_stack.push(root);
-    while(!stk.empty()){
+    while(!helper_stack.empty()){
         node *curr = stk.top();
         stk.push(curr);
         helper_stack.pop();
@@ -51,7 +51,7 @@ void PostOrderTraversalIter(node *root)
     // the previous order traversal.
     while(!stk.empty()){
         std :: cout << stk.top() << std :: endl;
-        helper_stack.pop();
+        stk.pop();
     }
 
 }
@@ -71,7 +71,7 @@ void MiddOrderTraversalIter(node *root)
             current = stk.top();
             stk.pop();
             std :: cout << current->key << std :: endl;
-            current = current->right
+            current = current->right;
         }
     }
 }
