@@ -3,13 +3,13 @@
 
 ## [Create BST](BinaryTree/BinaryTree.h)
 
-## [Traversal_Iteration](BinaryTree/Traversal_Iteration.h)
+## [Traversal_Iteration](BinaryTree/TraversalIteration.cpp)
 
-## [Traversal_Recursion](BinaryTree/Traversal_Recursion.h)
+## [Traversal_Recursion](BinaryTree/TraversalRecursion.h)
 
 ## [TreeDelete](TreeDelete.cpp)
 
-## [TreeInsert](TreeInsert.cpp) 
+## [TreeInsert](TreeInsert.cpp)
 
 ## [TreePredecessor](TreePredecessor.cpp)
 
